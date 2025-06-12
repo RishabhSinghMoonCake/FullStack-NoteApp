@@ -5,3 +5,10 @@ Installed Dependencies
  -> jsonwebtoken - for tokenization
 
 Database -> sqlLite -> then change to -> postgresql(for practice)
+
+Made Client folder --------------------------------
+(For front end)
+
+using npm install react-router for linking pages
+and all pages inside pages folder
+

@@ -1,9 +1,63 @@
+import toast from "react-hot-toast"
+import '../css/loginPage.css'
+
+import React, { useState,useEffect,useRef} from "react"
 
 export default function Login()
 {
+  const [register,setRegister] = useState(false)
+  const [emailVal,setEmailVal] = useState("")
+  const [passVal, setPassVal] = useState("")
+  
+  const apiBase = '/'
+
+  function handleEmailChange(event)
+  {
+    setEmailVal(e=>event.target.value)
+  }
+
+  function handlePasswordChange(event)
+  {
+    setPassVal(p=>event.target.value)
+  }
+
+  async function Authenticate(register)
+  {
+    console.log(emailVal, passVal)
+    let data
+    if(register)
+    {
+      const response = await fetch(apiBase + 'auth/register',{
+        method:'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({username:emailVal,password:passVal})
+      })
+      data = await response.json()
+    }
+    else
+    {
+      
+    }
+  }
+
   return(
     <>
-      Login Page
+      <h1 className="heading">Your Personalized Todo App</h1>
+      <section className="login">
+        {
+        register?<h1 className="login-header">Sign Up</h1>
+        :<h1 className="Regiester-header">Sign In</h1>}
+        <input className="email-input-field" placeholder="Username or Email" onChange={handleEmailChange} type="email" />
+        <input className="password-input-field" placeholder="Password" onChange={handlePasswordChange} type="password" />
+        <button onClick={()=>Authenticate(register)}>
+          {
+            register?<p>Sign Up</p>
+            : <p>Sign In</p>
+          }
+        </button>
+      </section>
     </>
     
   )
