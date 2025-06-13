@@ -1,0 +1,12 @@
+### GET / 
+GET http://localhost:8000/
+
+###test sign up
+
+POST http://localhost:5173/auth/register
+Content-Type: application/json
+
+{
+  'username':'rishabh',
+  'password':'123123'
+}

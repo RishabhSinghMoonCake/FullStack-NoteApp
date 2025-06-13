@@ -9,7 +9,7 @@ export default function Login()
   const [emailVal,setEmailVal] = useState("")
   const [passVal, setPassVal] = useState("")
   
-  const apiBase = '/'
+  const apiBase = 'http://localhost:8000/'
 
   function handleEmailChange(event)
   {
@@ -21,24 +21,69 @@ export default function Login()
     setPassVal(p=>event.target.value)
   }
 
-  async function Authenticate(register)
+  async function Authenticate(event)
   {
-    console.log(emailVal, passVal)
-    let data
+    try {
+      
+      console.log(emailVal, passVal)
+      let data
+      if(register)
+      {
+        const response = await fetch(apiBase + 'auth/register',{
+          method:'POST',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({username:emailVal,password:passVal})
+        })
+        if(!response.ok) return;
+        data = await response.json()
+      }
+      else
+      {
+        const response = await fetch(apiBase + 'auth/login',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({username:emailVal, password:passVal})
+        })
+        if(!response.ok) return;
+        data = await response.json()
+      }
+      
+      console.log(data)
+      if(data.token)
+      {
+        const token = data.token
+        localStorage.setItem('token', token)
+        
+        event.target.innerHTML = 'Loading...'
+        
+      }
+      else
+      {
+        const mess = data.message
+        //toast.error(mess||'Failed to authenticate')
+        
+      }
+    } catch (error) {
+      console.log(error)
+    } finally
+    {
+      event.target.innerHTML = 'Loaded'
+    }
+  }
+
+  function toggle(event)
+  {
     if(register)
     {
-      const response = await fetch(apiBase + 'auth/register',{
-        method:'POST',
-        headers: {
-          'Content-Type':'application/json'
-        },
-        body: JSON.stringify({username:emailVal,password:passVal})
-      })
-      data = await response.json()
+      event.target.innerHTML = 'Sign In'
+      setRegister(false);
     }
     else
     {
-      
+      event.target.innerHTML = 'Sign Up'
+      setRegister(true)
     }
   }
 
@@ -51,7 +96,8 @@ export default function Login()
         :<h1 className="Regiester-header">Sign In</h1>}
         <input className="email-input-field" placeholder="Username or Email" onChange={handleEmailChange} type="email" />
         <input className="password-input-field" placeholder="Password" onChange={handlePasswordChange} type="password" />
-        <button onClick={()=>Authenticate(register)}>
+        <p className="toggle" onClick={(e)=>toggle(e)}>Sign In?</p>
+        <button onClick={(event)=>Authenticate(event)}>
           {
             register?<p>Sign Up</p>
             : <p>Sign In</p>
