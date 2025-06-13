@@ -8,6 +8,10 @@ body{
   color: black;
 }
 
+.sign-header{
+  color: black;
+}
+
 .login{
   background-color: aliceblue;
   max-width: 600px;
@@ -24,6 +28,7 @@ body{
   border-radius: 0 40px;
   padding: 30px;
   box-shadow: 0 0 10px rgb(196, 196, 196);
+  color: black;
 }
 h1{
   margin: 0 0 20px 0;

@@ -11,11 +11,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Login/>}/>
         <Route path="/home" element={<Home/>}/>
-        <Route path="/note/:id" element={<NoteCreate/>}/>
+        <Route path="/note" element={<NoteCreate/>}/>
+        
       </Routes>
     </div>
     
-  )
+  )//<Route path="/note/:id" element={<NoteCreate/>}/>
 }
 
 export default App

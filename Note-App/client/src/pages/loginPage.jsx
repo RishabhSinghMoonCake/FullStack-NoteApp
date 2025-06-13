@@ -103,8 +103,8 @@ export default function Login()
       <h1 className="heading">Your Personalized Todo App</h1>
       <section className="login">
         {
-        register?<h1 className="login-header">Sign Up</h1>
-        :<h1 className="Regiester-header">Sign In</h1>}
+        register?<h1 className="sign-header">Sign Up</h1>
+        :<h1 className="sign-header">Sign In</h1>}
         <input className="email-input-field" placeholder="Username or Email" onChange={handleEmailChange} type="email" />
         <input className="password-input-field" placeholder="Password" onChange={handlePasswordChange} type="password" />
         <p className="toggle" onClick={(e)=>toggle(e)}>Sign In?</p>
