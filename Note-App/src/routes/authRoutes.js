@@ -37,6 +37,7 @@ router.post('/login' , (req,res)=>{
     const user = users.get(username)
     if(!user)
     {
+      console.log('not user found')
       return res.sendStatus(404)
     }
     

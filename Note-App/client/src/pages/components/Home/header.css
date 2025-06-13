@@ -1,0 +1,8 @@
+html{
+  width: 100%;
+}
+.header-body{
+  background-color: rgb(16, 16, 16);
+  width: 100px;
+  height: 80px;
+}

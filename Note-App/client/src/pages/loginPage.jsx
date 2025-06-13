@@ -2,6 +2,7 @@ import toast from "react-hot-toast"
 import '../css/loginPage.css'
 
 import React, { useState,useEffect,useRef} from "react"
+import { Link,useNavigate } from "react-router"
 
 export default function Login()
 {
@@ -10,6 +11,8 @@ export default function Login()
   const [passVal, setPassVal] = useState("")
   
   const apiBase = 'http://localhost:8000/'
+
+  const navigate = useNavigate()
 
   function handleEmailChange(event)
   {
@@ -23,6 +26,11 @@ export default function Login()
 
   async function Authenticate(event)
   {
+    if(!emailVal||
+      !passVal||
+      !emailVal.includes('@')||
+      passVal.length<6) return;
+
     try {
       
       console.log(emailVal, passVal)
@@ -49,27 +57,30 @@ export default function Login()
         if(!response.ok) return;
         data = await response.json()
       }
-      
-      console.log(data)
       if(data.token)
       {
         const token = data.token
         localStorage.setItem('token', token)
-        
+        toast.success('Success')
         event.target.innerHTML = 'Loading...'
+
+        setTimeout(() => {
+          navigate('/home')
+        }, 200);
         
       }
       else
       {
         const mess = data.message
-        //toast.error(mess||'Failed to authenticate')
+        toast.error(mess||'Failed to authenticate')
         
       }
     } catch (error) {
       console.log(error)
+      toast.error('Failed to authenticate')
     } finally
     {
-      event.target.innerHTML = 'Loaded'
+      
     }
   }
 
