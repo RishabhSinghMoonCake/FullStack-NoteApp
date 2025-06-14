@@ -9,8 +9,7 @@ export default function Login()
   const [register,setRegister] = useState(false)
   const [emailVal,setEmailVal] = useState("")
   const [passVal, setPassVal] = useState("")
-  
-  const apiBase = 'http://localhost:8000/'
+  const apiBase = `http://localhost:8000/`
 
   const navigate = useNavigate()
 

@@ -30,7 +30,7 @@ app.get('/' , (req,res)=>{
 
 //Routes
 app.use('/auth', authRoutes)
-app.use('/notes', AuthMiddleware,noteRoutes)
+app.use('/noteAuth', AuthMiddleware,noteRoutes)
 
 app.listen(PORT, ()=>{
   console.log(`Server Successfully started at port ${PORT}`)

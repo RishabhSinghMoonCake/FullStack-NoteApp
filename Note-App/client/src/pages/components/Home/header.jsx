@@ -1,11 +1,15 @@
 import { useNavigate } from 'react-router'
 import './header.css'
-export default function Header()
+export default function Header(props)
 {
   const navigate = useNavigate()
   function handleNewNote()
   {
-    navigate('/note')
+    if(!Number.isInteger(props.id))
+    {
+      navigate('/home')
+    }
+    navigate(`/note/${props.id}`)
   }
 
   return(

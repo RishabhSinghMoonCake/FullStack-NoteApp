@@ -1,0 +1,58 @@
+
+
+nav{
+  background-color: rgb(36, 36, 36);
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+button{
+  height: 50px;
+  margin: 15px;
+}
+
+input{
+  background-color: rgb(35, 35, 35);
+  color: white;
+  font-size: x-large;
+  text-align: center;
+}
+
+#text-box-id{
+  resize: none;
+  margin: 10px;
+  background-color: rgb(43, 43, 43);;
+
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: medium;
+  width: 97%;
+  
+  text-align: start;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#text-box-id::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#text-box-id {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.container{
+  position: relative;
+}
+
+.save-btn{
+  position:fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: large;
+}

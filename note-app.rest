@@ -10,3 +10,19 @@ Content-Type: application/json
   "username":"rishabh@gmail.com",
   "password":"1231231"
 }
+
+###test getting all notes 
+
+GET http://localhost:8000/noteAuth/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ5ODg4ODUwLCJleHAiOjE3NDk5NzUyNTB9.zxjr3iM1PJncsJYjeKHixxedKcY3E_6R_YByaO2I6RE
+
+###Create a note
+POST http://localhost:8000/noteAuth/saveNote
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ5ODg4ODUwLCJleHAiOjE3NDk5NzUyNTB9.zxjr3iM1PJncsJYjeKHixxedKcY3E_6R_YByaO2I6RE
+Content-Type: application/json
+
+{
+  "noteId":1,
+  "noteName":"Note-1",
+  "noteText":"THis is a dummy node"
+}

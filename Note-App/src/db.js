@@ -17,10 +17,10 @@ db.exec(`
 //For user data table
 db.exec(`
   CREATE TABLE notes(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     user_id INTEGER,
-    note-name TEXT,
-    note-text TEXT,
+    note_name TEXT,
+    note_text TEXT,
     FOREIGN KEY(user_id) REFERENCES users(id)
   )
   `)
