@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
   try {
     const prep = db.prepare('SELECT * FROM notes WHERE user_id = ?')
     const allNotes = prep.all(req.userId)
+    console.log(allNotes)
     res.json(allNotes)
   } catch (error) {
     console.error(error)
@@ -26,6 +27,7 @@ router.get('/count', (req, res) => {
 });
 
 router.post('/saveNote', (req, res) => {
+  db.prepare('PRAGMA foreign_keys = ON').run()
   const { noteId, noteName, noteText } = req.body
 
   try {
