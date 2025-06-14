@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     const prep = db.prepare('SELECT * FROM notes WHERE user_id = ?')
     const allNotes = prep.all(req.userId)
     res.json(allNotes)
-    console.log(allNotes)
   } catch (error) {
     console.error(error)
     res.status(500).json({ message: error.message })
