@@ -53,7 +53,10 @@ export default function Login()
           headers:{'Content-Type':'application/json'},
           body: JSON.stringify({username:emailVal, password:passVal})
         })
-        if(!response.ok) return;
+        if(!response.ok) {
+          toast.error("User Does Not Exist!");
+          return
+        }
         data = await response.json()
       }
       if(data.token)
@@ -70,16 +73,12 @@ export default function Login()
       }
       else
       {
-        const mess = data.message
-        toast.error(mess||'Failed to authenticate')
+        toast.error('Failed to authenticate')
         
       }
     } catch (error) {
       console.log(error)
       toast.error('Failed to authenticate')
-    } finally
-    {
-      
     }
   }
 

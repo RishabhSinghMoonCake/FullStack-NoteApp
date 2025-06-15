@@ -46,6 +46,11 @@ input{
   width: 80%;
 }
 
+.email-input-field, .password-input-field{
+  background-color: white;
+  color: black;
+}
+
 button{
   width: 80px;
   padding: 10px 10px;
