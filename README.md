@@ -71,6 +71,14 @@ cd client
 npm install
 npm run dev
 
+### Preview
+
+![Screenshot 2025-06-15 144241](https://github.com/user-attachments/assets/c22d5219-5770-481a-b0e6-a3cad71da38e)
+![Screenshot 2025-06-15 144234](https://github.com/user-attachments/assets/365c5b86-ea47-42da-bbb9-61a7ea1eaac3)
+![Screenshot 2025-06-15 144302](https://github.com/user-attachments/assets/1da36bb5-d892-4451-9e1d-9ddbbc0632a6)
+![Screenshot 2025-06-15 144253](https://github.com/user-attachments/assets/6ff113e1-7a7c-45c7-9b32-b5bb5793e6cb)
+
+
 🔐 Environment Variables
 Create a .env file in the root of the backend (/server) and add:
 JWT_SECRET=your_jwt_secret_key
